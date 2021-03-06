@@ -33,9 +33,8 @@ yeast_tree.create_node(tag=yeast_name, identifier=progenitor_id)
 
 # Iterate through records and add if Parent_ID is in the tree
 for yeast_id, record in yeast_records.items():
-  yeast_name = get_yeast_name(record)
-  parent_id = record['Parent_ID']
-  if parent_id in yeast_tree.nodes:
-    yeast_tree.create_node(tag=yeast_name, identifier=yeast_id, parent=parent_id)
+  if record['Parent_ID'] in yeast_tree.nodes:
+    yeast_name = get_yeast_name(record)
+    yeast_tree.create_node(tag=yeast_name, identifier=yeast_id, parent=record['Parent_ID'])
 
 yeast_tree.show()
